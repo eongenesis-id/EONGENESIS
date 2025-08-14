@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EON GENESIS - Sempoa Quantum</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>EON GENESIS - Quantum Abacus</title>
     <style>
+        /* RESET CSS */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* VARIABEL DESAIN FUTURISTIK */
         :root {
             --neon-blue: #00f7ff;
             --neon-pink: #ff00aa;
@@ -14,30 +17,29 @@
             --galaxy-purple: #4d2b8c;
         }
         
+        /* TAMPILAN UTAMA */
         body {
-            font-family: 'Rajdhani', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
             background: var(--dark-space);
             color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            padding: 2rem;
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(0, 247, 255, 0.1) 0%, transparent 20%),
                 radial-gradient(circle at 80% 70%, rgba(255, 0, 170, 0.1) 0%, transparent 20%);
+            overflow-x: hidden;
         }
-
+        
+        /* HEADER */
         .header {
             text-align: center;
-            margin: 2rem 0;
-            position: relative;
+            margin-bottom: 2rem;
         }
-
+        
         .logo {
-            font-family: 'Orbitron', sans-serif;
             font-size: 3rem;
             background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
             -webkit-background-clip: text;
@@ -45,267 +47,131 @@
             color: transparent;
             text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
             letter-spacing: 3px;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 0.5rem;
         }
-
-        .logo::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
+        
+        /* KONTAINER SEMPOA */
+        .abacus-container {
             width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .subtitle {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-yellow);
-            letter-spacing: 5px;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            text-shadow: 0 0 8px rgba(255, 240, 0, 0.5);
-        }
-
-        .quantum-abacus {
-            width: 95%;
             max-width: 900px;
             background: rgba(10, 14, 23, 0.8);
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 
-                0 0 30px rgba(0, 247, 255, 0.2),
-                inset 0 0 20px rgba(0, 247, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
             border: 1px solid rgba(0, 247, 255, 0.3);
-            position: relative;
-            overflow: hidden;
             margin-bottom: 2rem;
         }
-
-        .quantum-abacus::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle, transparent 60%, rgba(0, 247, 255, 0.05) 60.5%),
-                linear-gradient(45deg, transparent 49%, rgba(0, 247, 255, 0.03) 50%, transparent 51%);
-            background-size: 30px 30px;
-            animation: grid-move 30s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes grid-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 30px); }
-        }
-
+        
+        /* TIANG DAN MANIK-MANIK */
         .rods-container {
             display: flex;
             justify-content: center;
             padding: 1rem 0;
             overflow-x: auto;
-            position: relative;
         }
-
+        
         .rod {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 0.8rem;
+            margin: 0 1rem;
             width: 60px;
             position: relative;
         }
-
+        
         .rod-label {
             position: absolute;
             top: -25px;
             color: var(--neon-blue);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-shadow: 0 0 5px var(--neon-blue);
         }
-
+        
         .rod-line {
             width: 2px;
             height: 280px;
-            background: linear-gradient(to bottom, 
-                transparent, 
-                var(--neon-blue), 
-                transparent);
+            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
             box-shadow: 0 0 10px var(--neon-blue);
             position: relative;
             z-index: 1;
         }
-
+        
         .upper-bead {
             width: 45px;
             height: 45px;
-            background: radial-gradient(circle at 30% 30%, 
-                #ff00aa, 
-                #b0007a);
+            background: radial-gradient(circle at 30% 30%, #ff00aa, #b0007a);
             border-radius: 50%;
             margin: 0.6rem 0;
             cursor: pointer;
             position: relative;
             z-index: 2;
-            box-shadow: 
-                inset -5px -5px 10px rgba(0, 0, 0, 0.6),
-                0 0 15px rgba(255, 0, 170, 0.7);
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 0, 170, 0.7);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .upper-bead:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 0, 170, 0.9);
-        }
-
+        
         .lower-bead {
             width: 45px;
             height: 45px;
-            background: radial-gradient(circle at 30% 30%, 
-                var(--neon-yellow), 
-                #ccb800);
+            background: radial-gradient(circle at 30% 30%, var(--neon-yellow), #ccb800);
             border-radius: 50%;
             margin: 0.6rem 0;
             cursor: pointer;
             position: relative;
             z-index: 2;
-            box-shadow: 
-                inset -5px -5px 10px rgba(0, 0, 0, 0.6),
-                0 0 15px rgba(255, 240, 0, 0.7);
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 240, 0, 0.7);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .lower-bead:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 240, 0, 0.9);
-        }
-
-        .divider {
-            height: 25px;
-            width: 100%;
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .divider::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, 
-                transparent, 
-                var(--neon-blue), 
-                transparent);
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
+        
+        /* TAMPILAN NILAI */
         .quantum-display {
-            font-family: 'Orbitron', sans-serif;
+            font-family: monospace;
             font-size: 2.5rem;
             color: var(--neon-blue);
             text-align: center;
             margin-top: 1.5rem;
             text-shadow: 0 0 10px var(--neon-blue);
             letter-spacing: 3px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.5rem 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--neon-blue);
-            box-shadow: 
-                inset 0 0 10px rgba(0, 247, 255, 0.3),
-                0 0 20px rgba(0, 247, 255, 0.2);
         }
-
-        .digit-place {
-            display: inline-block;
-            min-width: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .digit-place::after {
-            content: attr(data-place);
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            color: var(--neon-pink);
-            text-shadow: 0 0 5px var(--neon-pink);
-        }
-
-        .powered-by {
-            text-align: center;
-            margin-top: 1rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-        }
-
+        
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .rod {
-                margin: 0 0.5rem;
-                width: 50px;
-            }
-            
-            .upper-bead, .lower-bead {
-                width: 40px;
-                height: 40px;
-            }
+            .rod { margin: 0 0.5rem; width: 50px; }
+            .upper-bead, .lower-bead { width: 40px; height: 40px; }
+            .logo { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">EON GENESIS.id</div>
-        <div class="subtitle">QUANTUM ABACUS</div>
+        <h1 class="logo">EON GENESIS.id</h1>
+        <p>Quantum Abacus</p>
     </div>
-
-    <div class="quantum-abacus">
+    
+    <div class="abacus-container">
         <div class="rods-container" id="rods-container">
             <!-- Tiang akan di-generate oleh JavaScript -->
         </div>
-        <div class="divider"></div>
-        <div class="quantum-display" id="quantum-display">
-            <!-- Nilai akan ditampilkan di sini -->
-        </div>
-    </div>
-
-    <div class="powered-by">
-        Powered by Quantum Computing Technology
+        <div class="quantum-display" id="quantum-display">0</div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Konfigurasi Quantum Abacus
+            // KONFIGURASI
             const rodCount = 9;
             const beadsPerRod = { upper: 1, lower: 4 };
+            const placeValues = ['Satuan', 'Puluhan', 'Ratusan', 'Ribuan', 'Puluh Ribu', 'Ratus Ribu', 'Jutaan', 'Puluh Juta', 'Ratus Juta'];
             const UPPER_MOVE = 50;
             const LOWER_MOVE = 40;
-            const placeValues = ['Satuan', 'Puluhan', 'Ratusan', 'Ribuan', 'Puluh Ribu', 'Ratus Ribu', 'Jutaan', 'Puluh Juta', 'Ratus Juta'];
             
-            // Inisialisasi
+            // INISIALISASI
             const rodsContainer = document.getElementById('rods-container');
             const quantumDisplay = document.getElementById('quantum-display');
-            let rods = [];
             
-            // Buat Quantum Abacus
-            function createQuantumAbacus() {
+            // BUAT SEMPOA
+            function createAbacus() {
                 rodsContainer.innerHTML = '';
-                rods = [];
                 
                 for (let i = 0; i < rodCount; i++) {
                     const rod = document.createElement('div');
@@ -317,7 +183,7 @@
                     label.textContent = placeValues[rodCount - 1 - i];
                     rod.appendChild(label);
                     
-                    // Garis tiang quantum
+                    // Garis tiang
                     const line = document.createElement('div');
                     line.className = 'rod-line';
                     rod.appendChild(line);
@@ -332,14 +198,9 @@
                         const active = this.dataset.active === 'true';
                         this.style.transform = active ? 'translateY(0)' : `translateY(${UPPER_MOVE}px)`;
                         this.dataset.active = (!active).toString();
-                        updateQuantumDisplay();
+                        updateDisplay();
                     });
                     rod.appendChild(upperBead);
-                    
-                    // Pemisah quantum
-                    const divider = document.createElement('div');
-                    divider.className = 'divider';
-                    rod.appendChild(divider);
                     
                     // Manik bawah (nilai 1)
                     for (let j = 0; j < beadsPerRod.lower; j++) {
@@ -353,33 +214,32 @@
                             const active = this.dataset.active === 'true';
                             this.style.transform = active ? 'translateY(0)' : `translateY(${-LOWER_MOVE}px)`;
                             this.dataset.active = (!active).toString();
-                            updateQuantumDisplay();
+                            updateDisplay();
                         });
                         rod.appendChild(lowerBead);
                     }
                     
                     rodsContainer.appendChild(rod);
-                    rods.push({ upperActive: false, lowerActive: 0 });
                 }
             }
             
-            // Update tampilan nilai
-            function updateQuantumDisplay() {
+            // UPDATE NILAI
+            function updateDisplay() {
                 let total = 0;
                 const upperBeads = document.querySelectorAll('.upper-bead');
                 const lowerBeads = document.querySelectorAll('.lower-bead');
                 
-                // Hitung nilai dari kanan (satuan) ke kiri
+                // Hitung dari kanan (satuan) ke kiri
                 for (let i = 0; i < rodCount; i++) {
-                    const placeValue = Math.pow(10, i);
+                    const placeValue = Math.pow(10, i); // 10^0=1 (satuan), 10^1=10 (puluhan), dst
                     let rodValue = 0;
                     
-                    // Cek manik atas (nilai 5)
+                    // Cek manik atas
                     if (upperBeads[rodCount - 1 - i].dataset.active === 'true') {
                         rodValue += 5;
                     }
                     
-                    // Cek manik bawah (nilai 1)
+                    // Cek manik bawah
                     const startIdx = (rodCount - 1 - i) * beadsPerRod.lower;
                     for (let j = 0; j < beadsPerRod.lower; j++) {
                         if (lowerBeads[startIdx + j].dataset.active === 'true') {
@@ -390,23 +250,12 @@
                     total += rodValue * placeValue;
                 }
                 
-                // Format tampilan dengan pemisah ribuan
-                const formattedTotal = total.toLocaleString('id-ID');
-                quantumDisplay.innerHTML = formattedTotal.split('').reverse().map((digit, index) => {
-                    return `<span class="digit-place" data-place="${placeValues[index] || ''}">${digit}</span>`;
-                }).reverse().join('');
+                quantumDisplay.textContent = total.toLocaleString('id-ID');
             }
             
-            // Inisialisasi Quantum Abacus
-            createQuantumAbacus();
-            updateQuantumDisplay();
-            
-            // Efek loading quantum
-            setTimeout(() => {
-                document.body.style.animation = 'none';
-                const abacus = document.querySelector('.quantum-abacus');
-                abacus.style.animation = 'quantum-glow 2s infinite alternate';
-            }, 500);
+            // INISIALISASI
+            createAbacus();
+            updateDisplay();
         });
     </script>
 </body>
