@@ -6,116 +6,75 @@
     <title>Futuristic Sempoa</title>
     <style>
         :root {
-            /* Warna Futuristik */
-            --primary-dark: #0a192f;
-            --primary-light: #172a45;
-            --accent-color: #64ffda;
-            --text-primary: #ccd6f6;
-            --text-secondary: #8892b0;
+            /* Warna Kayu Mewah */
+            --wood-dark: #4a3a2a;
+            --wood-light: #6b5a45;
+            --wood-accent: #8b7a65;
+            --divider-color: #a89a84;
             
-            /* Warna Beads */
-            --bead-upper-dark: #FF6B6B;
-            --bead-upper-light: #FF9E9E;
-            --bead-lower-dark: #4ECDC4;
-            --bead-lower-light: #A2F2F2;
-            --neon-glow: rgba(255, 107, 107, 0.4);
+            /* Warna Beads yang lebih cerah untuk anak-anak */
+            --bead-upper-dark: #FF6B6B;  /* Coral merah */
+            --bead-upper-light: #FF9E9E; /* Coral muda */
+            --bead-lower-dark: #4ECDC4;   /* Turquoise */
+            --bead-lower-light: #A2F2F2;  /* Turquoise muda */
+            --neon-glow: rgba(255, 107, 107, 0.4); /* Glow merah muda */
+            
+            /* Warna tambahan */
             --highlight-glow: rgba(255, 255, 255, 0.3);
             
             /* Ukuran Responsif */
-            --bead-size: min(8vw, 44px);
-            --rod-spacing: min(3vw, 16px);
-            --divider-height: min(2vw, 12px);
-            --font-size-large: min(8vw, 3rem);
-            --font-size-medium: min(5vw, 1.5rem);
-        }
-        
-        * {
-            box-sizing: border-box;
+            --bead-size: min(14vw, 50px);
+            --rod-spacing: min(3vw, 15px);
+            --divider-height: min(2vw, 10px);
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: var(--primary-dark);
-            color: var(--text-primary);
+            padding: 10px;
+            background: linear-gradient(135deg, #1a120b, #2a2015);
+            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
             touch-action: manipulation;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 2rem;
-            width: 100%;
-            max-width: 800px;
+            margin-bottom: 1.5rem;
         }
         
         .logo {
-            font-size: var(--font-size-large);
+            font-size: min(8vw, 2.5rem);
             font-weight: bold;
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            color: #FF9E9E;
+            text-shadow: 
+                0 0 10px var(--neon-glow),
+                0 0 20px rgba(255, 158, 158, 0.5);
             line-height: 1;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            font-size: var(--font-size-medium);
-            color: var(--text-secondary);
-            margin-top: 0.8rem;
-            font-weight: 300;
             letter-spacing: 1px;
         }
         
-        .abacus-container {
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 0 10px;
-        }
-        
         .abacus-frame {
-            background: var(--primary-light);
-            padding: min(4vw, 30px) min(3vw, 25px);
+            background: linear-gradient(145deg, var(--wood-dark), var(--wood-light));
+            padding: min(4vw, 20px) min(3vw, 15px);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(100, 255, 218, 0.2);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 800px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--wood-accent);
+            width: 95%;
+            max-width: 500px;
             margin: 0 auto;
-        }
-        
-        .abacus-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
         }
         
         .rods-container {
             display: flex;
-            justify-content: center;
-            padding: min(4vw, 25px) 0;
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        
-        .rods-container::-webkit-scrollbar {
-            display: none;
+            justify-content: space-between;
+            padding: min(4vw, 20px) 0;
         }
         
         .rod {
@@ -123,9 +82,7 @@
             flex-direction: column;
             align-items: center;
             margin: 0 var(--rod-spacing);
-            min-width: calc(var(--bead-size) * 1.2);
             position: relative;
-            flex-shrink: 0;
         }
         
         .rod-line {
@@ -133,12 +90,14 @@
             width: 6px;
             height: 100%;
             background: linear-gradient(to bottom, 
-                var(--primary-light), 
-                var(--accent-color), 
-                var(--primary-light));
+                var(--wood-light), 
+                var(--divider-color), 
+                var(--wood-light));
             z-index: 1;
             border-radius: 4px;
-            box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+            box-shadow: 
+                inset 0 0 10px rgba(0, 0, 0, 0.3),
+                0 0 10px rgba(0, 0, 0, 0.2);
         }
         
         .upper-bead {
@@ -158,7 +117,6 @@
                 0 0 0 2px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
             border: 1px solid var(--highlight-glow);
-            touch-action: manipulation;
         }
         
         .lower-bead {
@@ -178,7 +136,6 @@
                 0 0 0 2px rgba(162, 242, 242, 0.3);
             transition: all 0.3s ease;
             border: 1px solid var(--highlight-glow);
-            touch-action: manipulation;
         }
         
         .horizontal-divider {
@@ -186,62 +143,42 @@
             height: var(--divider-height);
             background: linear-gradient(90deg, 
                 transparent, 
-                var(--accent-color), 
+                var(--divider-color), 
                 transparent);
-            margin: min(5vw, 30px) 0;
+            margin: min(4vw, 20px) 0;
             position: relative;
-            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 0 3px 6px rgba(0, 0, 0, 0.3),
+                0 2px 0 rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             z-index: 3;
         }
         
-        .divider-extension {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-color);
-            z-index: 1;
-            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
-        }
-        
         .value-display {
-            font-family: 'Arial', sans-serif;
-            font-size: var(--font-size-large);
-            color: var(--accent-color);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: min(8vw, 2.5rem);
+            color: #FF9E9E;
             text-align: center;
-            margin-top: min(4vw, 25px);
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            margin-top: min(4vw, 20px);
+            text-shadow: 
+                0 0 10px var(--neon-glow),
+                0 0 20px rgba(255, 158, 158, 0.5);
             letter-spacing: 2px;
-            background: rgba(10, 25, 47, 0.5);
-            padding: min(3vw, 15px) min(5vw, 30px);
+            background: rgba(0, 0, 0, 0.25);
+            padding: min(3vw, 10px) min(5vw, 20px);
             border-radius: 15px;
-            border: 2px solid rgba(100, 255, 218, 0.2);
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            overflow: hidden;
+            border: 2px solid var(--wood-accent);
+            box-shadow: 
+                inset 0 0 15px rgba(0, 0, 0, 0.4),
+                0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .value-display::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(100, 255, 218, 0.2), 
-                transparent);
-            animation: shine 3s infinite;
+        .upper-bead.active {
+            transform: translateY(calc(var(--bead-size) * 0.9)) scale(1.05);
         }
         
-        @keyframes shine {
-            100% {
-                left: 100%;
-            }
+        .lower-bead.active {
+            transform: translateY(calc(var(--bead-size) * -0.9)) scale(1.05);
         }
         
         .upper-bead:hover, .upper-bead:active {
@@ -259,77 +196,30 @@
                 0 0 30px rgba(78, 205, 196, 0.7),
                 0 0 0 4px rgba(162, 242, 242, 0.4);
         }
-        
-        .upper-bead.active {
-            transform: translateY(var(--bead-size)) scale(1.05);
-        }
-        
-        .lower-bead.active {
-            transform: translateY(calc(-1 * var(--bead-size))) scale(1.05);
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .rod {
-                margin: 0 min(2vw, 12px);
-            }
-            
-            .abacus-frame {
-                padding: 15px 10px;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            :root {
-                --bead-size: 36px;
-                --rod-spacing: 8px;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo">Futuristic Sempoa</div>
-        <div class="subtitle">Digital Abacus for Modern Learning</div>
     </div>
     
-    <div class="abacus-container">
-        <div class="abacus-frame" id="abacus-frame">
-            <div class="rods-container" id="rods-container">
-                <!-- Tiang akan di-generate oleh JavaScript -->
-            </div>
-            <div class="value-display" id="value-display">0</div>
+    <div class="abacus-frame">
+        <div class="rods-container" id="rods-container">
+            <!-- Rods will be generated by JavaScript -->
         </div>
+        <div class="value-display" id="value-display">0</div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Konfigurasi
-            const rodCount = 9;
-            const beadsPerRod = { upper: 1, lower: 4 };
-            
-            // Inisialisasi
-            const abacusFrame = document.getElementById('abacus-frame');
+            const rodCount = 5; // Hanya 5 ruas garis
             const rodsContainer = document.getElementById('rods-container');
             const valueDisplay = document.getElementById('value-display');
             let rods = [];
             
-            // Dapatkan ukuran bead dari CSS
-            function getBeadSize() {
-                const bead = document.querySelector('.upper-bead') || document.createElement('div');
-                bead.className = 'upper-bead';
-                document.body.appendChild(bead);
-                const size = bead.offsetHeight;
-                document.body.removeChild(bead);
-                return size;
-            }
-            
-            // Buat sempoa
             function createAbacus() {
                 rodsContainer.innerHTML = '';
                 rods = [];
-                
-                const beadSize = getBeadSize();
                 
                 for (let i = 0; i < rodCount; i++) {
                     const rod = document.createElement('div');
@@ -340,49 +230,24 @@
                     rodLine.className = 'rod-line';
                     rod.appendChild(rodLine);
                     
-                    // Manik atas
+                    // Manik atas (nilai 5)
                     const upperBead = document.createElement('div');
                     upperBead.className = 'upper-bead';
                     upperBead.dataset.value = '5';
                     upperBead.dataset.rodIndex = i;
-                    upperBead.dataset.active = 'false';
                     rod.appendChild(upperBead);
                     
-                    // Pembatas horizontal yang diperpanjang
-                    const dividerContainer = document.createElement('div');
-                    dividerContainer.style.position = 'relative';
-                    dividerContainer.style.width = '100%';
-                    
+                    // Pembatas horizontal
                     const divider = document.createElement('div');
                     divider.className = 'horizontal-divider';
-                    dividerContainer.appendChild(divider);
+                    rod.appendChild(divider);
                     
-                    const dividerExtensionLeft = document.createElement('div');
-                    dividerExtensionLeft.className = 'divider-extension';
-                    dividerExtensionLeft.style.left = '-100%';
-                    dividerExtensionLeft.style.width = '100%';
-                    dividerExtensionLeft.style.position = 'absolute';
-                    dividerExtensionLeft.style.top = '0';
-                    dividerContainer.appendChild(dividerExtensionLeft);
-                    
-                    const dividerExtensionRight = document.createElement('div');
-                    dividerExtensionRight.className = 'divider-extension';
-                    dividerExtensionRight.style.right = '-100%';
-                    dividerExtensionRight.style.width = '100%';
-                    dividerExtensionRight.style.position = 'absolute';
-                    dividerExtensionRight.style.top = '0';
-                    dividerContainer.appendChild(dividerExtensionRight);
-                    
-                    rod.appendChild(dividerContainer);
-                    
-                    // Manik bawah
-                    for (let j = 0; j < beadsPerRod.lower; j++) {
+                    // Manik bawah (4 biji, nilai 1 masing-masing)
+                    for (let j = 0; j < 4; j++) {
                         const lowerBead = document.createElement('div');
                         lowerBead.className = 'lower-bead';
                         lowerBead.dataset.value = '1';
                         lowerBead.dataset.rodIndex = i;
-                        lowerBead.dataset.beadIndex = j;
-                        lowerBead.dataset.active = 'false';
                         rod.appendChild(lowerBead);
                     }
                     
@@ -390,59 +255,40 @@
                     rods.push({ upperActive: false, lowerActive: 0 });
                 }
                 
-                // Event listeners untuk desktop dan mobile
-                function setupBeadEvents(bead, isUpper) {
-                    const handleActivation = () => {
-                        const rodIndex = parseInt(bead.dataset.rodIndex);
+                // Event listeners
+                document.querySelectorAll('.upper-bead').forEach(bead => {
+                    bead.addEventListener('click', function() {
+                        const rodIndex = parseInt(this.dataset.rodIndex);
+                        rods[rodIndex].upperActive = !rods[rodIndex].upperActive;
                         
-                        if (isUpper) {
-                            rods[rodIndex].upperActive = !rods[rodIndex].upperActive;
-                            
-                            if (rods[rodIndex].upperActive) {
-                                bead.style.transform = `translateY(${beadSize}px) scale(1.05)`;
-                                bead.classList.add('active');
-                            } else {
-                                bead.style.transform = 'translateY(0)';
-                                bead.classList.remove('active');
-                            }
+                        if (rods[rodIndex].upperActive) {
+                            this.classList.add('active');
                         } else {
-                            const isActive = bead.dataset.active === 'true';
-                            
-                            if (!isActive) {
-                                bead.dataset.active = 'true';
-                                bead.style.transform = `translateY(${-beadSize}px) scale(1.05)`;
-                                bead.classList.add('active');
-                                rods[rodIndex].lowerActive++;
-                            } else {
-                                bead.dataset.active = 'false';
-                                bead.style.transform = 'translateY(0)';
-                                bead.classList.remove('active');
-                                rods[rodIndex].lowerActive--;
-                            }
+                            this.classList.remove('active');
                         }
                         
                         calculateTotal();
-                    };
-                    
-                    // Desktop (click) dan mobile (touch)
-                    bead.addEventListener('click', handleActivation);
-                    bead.addEventListener('touchstart', function(e) {
-                        e.preventDefault();
-                        handleActivation();
-                    }, { passive: false });
-                }
-                
-                // Setup events untuk semua bead
-                document.querySelectorAll('.upper-bead').forEach(bead => {
-                    setupBeadEvents(bead, true);
+                    });
                 });
                 
                 document.querySelectorAll('.lower-bead').forEach(bead => {
-                    setupBeadEvents(bead, false);
+                    bead.addEventListener('click', function() {
+                        const rodIndex = parseInt(this.dataset.rodIndex);
+                        const isActive = this.classList.contains('active');
+                        
+                        if (!isActive) {
+                            this.classList.add('active');
+                            rods[rodIndex].lowerActive++;
+                        } else {
+                            this.classList.remove('active');
+                            rods[rodIndex].lowerActive--;
+                        }
+                        
+                        calculateTotal();
+                    });
                 });
             }
             
-            // Hitung total
             function calculateTotal() {
                 let total = 0;
                 
@@ -455,22 +301,7 @@
                 valueDisplay.textContent = total.toLocaleString('id-ID');
             }
             
-            // Inisialisasi
             createAbacus();
-            
-            // Handle resize
-            window.addEventListener('resize', function() {
-                // Update posisi bead aktif saat ukuran berubah
-                const beadSize = getBeadSize();
-                
-                document.querySelectorAll('.upper-bead.active').forEach(bead => {
-                    bead.style.transform = `translateY(${beadSize}px) scale(1.05)`;
-                });
-                
-                document.querySelectorAll('.lower-bead.active').forEach(bead => {
-                    bead.style.transform = `translateY(${-beadSize}px) scale(1.05)`;
-                });
-            });
         });
     </script>
 </body>
