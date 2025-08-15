@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Futuristic Sempoa</title>
+    <title>Classic Wooden Sempoa</title>
     <style>
         :root {
             /* Warna Kayu Mewah */
-            --wood-dark: #4a3a2a;
-            --wood-light: #6b5a45;
-            --wood-accent: #8b7a65;
-            --divider-color: #a89a84;
+            --wood-dark: #3a2720;  /* Mahoni tua */
+            --wood-light: #5a4a42; /* Kayu oak */
+            --wood-accent: #7a6a62;
+            --divider-color: #b8a692; /* Warna brass */
             
-            /* Warna Beads yang lebih cerah untuk anak-anak */
-            --bead-upper-dark: #FF6B6B;  /* Coral merah */
-            --bead-upper-light: #FF9E9E; /* Coral muda */
-            --bead-lower-dark: #4ECDC4;   /* Turquoise */
-            --bead-lower-light: #A2F2F2;  /* Turquoise muda */
-            --neon-glow: rgba(255, 107, 107, 0.4); /* Glow merah muda */
-            
-            /* Warna tambahan */
-            --highlight-glow: rgba(255, 255, 255, 0.3);
+            /* Warna Beads */
+            --bead-upper-dark: #f5f5f5;  /* Mutiara */
+            --bead-upper-light: #ffffff; /* Putih mutiara */
+            --bead-lower-dark: #d4af37;   /* Emas tua */
+            --bead-lower-light: #f5d062;  /* Emas muda */
+            --bead-glow: rgba(245, 208, 98, 0.4);
             
             /* Ukuran Responsif */
             --bead-size: min(14vw, 50px);
             --rod-spacing: min(3vw, 15px);
             --divider-height: min(2vw, 10px);
+            --bead-gap: min(2vw, 10px);
+            --extra-space: min(7vw, 25px);
         }
         
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 10px;
-            background: linear-gradient(135deg, #1a120b, #2a2015);
-            color: white;
+            background: linear-gradient(135deg, #f5e7d8, #e8d5b5);
+            color: #3a2720;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -45,17 +44,25 @@
         .header {
             text-align: center;
             margin-bottom: 1.5rem;
+            order: -1;
+        }
+        
+        .brand {
+            font-size: min(8vw, 2.2rem);
+            font-weight: bold;
+            color: #3a2720;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .logo {
-            font-size: min(8vw, 2.5rem);
+            font-size: min(6vw, 1.8rem);
+            color: #3a2720;
+            margin-top: 0;
             font-weight: bold;
-            color: #FF9E9E;
-            text-shadow: 
-                0 0 10px var(--neon-glow),
-                0 0 20px rgba(255, 158, 158, 0.5);
-            line-height: 1;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .abacus-frame {
@@ -63,18 +70,32 @@
             padding: min(4vw, 20px) min(3vw, 15px);
             border-radius: 15px;
             box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.8),
-                inset 0 0 20px rgba(0, 0, 0, 0.4);
-            border: 2px solid var(--wood-accent);
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 0 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--wood-accent);
             width: 95%;
             max-width: 500px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .abacus-frame::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
+            box-shadow: 0 0 10px var(--divider-color);
         }
         
         .rods-container {
             display: flex;
             justify-content: space-between;
             padding: min(4vw, 20px) 0;
+            min-height: calc(var(--bead-size) * 8);
         }
         
         .rod {
@@ -96,8 +117,8 @@
             z-index: 1;
             border-radius: 4px;
             box-shadow: 
-                inset 0 0 10px rgba(0, 0, 0, 0.3),
-                0 0 10px rgba(0, 0, 0, 0.2);
+                inset 0 0 8px rgba(0, 0, 0, 0.4),
+                0 0 5px rgba(0, 0, 0, 0.2);
         }
         
         .upper-bead {
@@ -107,16 +128,16 @@
                 var(--bead-upper-light),
                 var(--bead-upper-dark) 70%);
             border-radius: 50%;
-            margin: min(2vw, 10px) 0;
+            margin-bottom: calc(var(--bead-gap) + var(--extra-space));
             cursor: pointer;
             position: relative;
             z-index: 2;
             box-shadow: 
-                inset -5px -5px 15px rgba(0, 0, 0, 0.4),
-                0 4px 20px var(--neon-glow),
-                0 0 0 2px rgba(255, 255, 255, 0.3);
+                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
+                0 2px 5px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
-            border: 1px solid var(--highlight-glow);
+            border: 1px solid rgba(255,255,255,0.3);
         }
         
         .lower-bead {
@@ -126,80 +147,79 @@
                 var(--bead-lower-light),
                 var(--bead-lower-dark) 70%);
             border-radius: 50%;
-            margin: min(2vw, 10px) 0;
+            margin-bottom: var(--bead-gap);
             cursor: pointer;
             position: relative;
             z-index: 2;
             box-shadow: 
-                inset -5px -5px 15px rgba(0, 0, 0, 0.4),
-                0 4px 20px rgba(78, 205, 196, 0.4),
-                0 0 0 2px rgba(162, 242, 242, 0.3);
+                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
+                0 2px 5px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            border: 1px solid var(--highlight-glow);
+            border: 1px solid rgba(245, 208, 98, 0.5);
         }
         
         .horizontal-divider {
-            width: 120%;
+            width: 140%;
             height: var(--divider-height);
             background: linear-gradient(90deg, 
                 transparent, 
                 var(--divider-color), 
                 transparent);
-            margin: min(4vw, 20px) 0;
+            margin: calc(var(--extra-space) * 1.5) 0;
             position: relative;
             box-shadow: 
-                inset 0 3px 6px rgba(0, 0, 0, 0.3),
-                0 2px 0 rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(184, 166, 146, 0.5);
+            border-radius: 3px;
             z-index: 3;
         }
         
         .value-display {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Georgia', serif;
             font-size: min(8vw, 2.5rem);
-            color: #FF9E9E;
+            color: var(--bead-lower-dark);
             text-align: center;
             margin-top: min(4vw, 20px);
-            text-shadow: 
-                0 0 10px var(--neon-glow),
-                0 0 20px rgba(255, 158, 158, 0.5);
             letter-spacing: 2px;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.2);
             padding: min(3vw, 10px) min(5vw, 20px);
-            border-radius: 15px;
-            border: 2px solid var(--wood-accent);
+            border-radius: 10px;
+            border: 1px solid var(--wood-accent);
             box-shadow: 
-                inset 0 0 15px rgba(0, 0, 0, 0.4),
-                0 5px 20px rgba(0, 0, 0, 0.3);
+                inset 0 0 10px rgba(0, 0, 0, 0.1),
+                0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
         .upper-bead.active {
-            transform: translateY(calc(var(--bead-size) * 0.9)) scale(1.05);
+            transform: translateY(calc(var(--bead-size) * 0.75 + var(--divider-height) / 2 + var(--extra-space) * 1.125)) scale(1.03);
         }
         
         .lower-bead.active {
-            transform: translateY(calc(var(--bead-size) * -0.9)) scale(1.05);
+            transform: translateY(calc(var(--bead-size) * -0.25 - var(--divider-height) / 2 - var(--extra-space) * 0.375)) scale(1.03);
         }
         
-        .upper-bead:hover, .upper-bead:active {
-            transform: scale(1.1) rotate(5deg);
+        .upper-bead:hover:not(.active), .upper-bead:active:not(.active) {
+            transform: scale(1.05);
             box-shadow: 
-                inset -5px -5px 15px rgba(0, 0, 0, 0.4),
-                0 0 30px var(--neon-glow),
-                0 0 0 4px rgba(255, 255, 255, 0.4);
+                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
+                0 3px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 2px rgba(255, 255, 255, 0.5);
         }
         
-        .lower-bead:hover, .lower-bead:active {
-            transform: scale(1.1) rotate(-5deg);
+        .lower-bead:hover:not(.active), .lower-bead:active:not(.active) {
+            transform: scale(1.05);
             box-shadow: 
-                inset -5px -5px 15px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(78, 205, 196, 0.7),
-                0 0 0 4px rgba(162, 242, 242, 0.4);
+                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
+                0 3px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 2px rgba(245, 208, 98, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="header">
+        <div class="brand">EONGENESIS.ID</div>
         <div class="logo">Futuristic Sempoa</div>
     </div>
     
@@ -212,7 +232,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const rodCount = 5; // Hanya 5 ruas garis
+            const rodCount = 5;
             const rodsContainer = document.getElementById('rods-container');
             const valueDisplay = document.getElementById('value-display');
             let rods = [];
@@ -225,34 +245,40 @@
                     const rod = document.createElement('div');
                     rod.className = 'rod';
                     
-                    // Garis tiang
                     const rodLine = document.createElement('div');
                     rodLine.className = 'rod-line';
                     rod.appendChild(rodLine);
                     
-                    // Manik atas (nilai 5)
+                    // Upper bead (nilai 5)
                     const upperBead = document.createElement('div');
                     upperBead.className = 'upper-bead';
                     upperBead.dataset.value = '5';
                     upperBead.dataset.rodIndex = i;
                     rod.appendChild(upperBead);
                     
-                    // Pembatas horizontal
+                    // Horizontal divider
                     const divider = document.createElement('div');
                     divider.className = 'horizontal-divider';
                     rod.appendChild(divider);
                     
-                    // Manik bawah (4 biji, nilai 1 masing-masing)
+                    // Lower beads (4 biji, nilai 1 masing-masing)
                     for (let j = 0; j < 4; j++) {
                         const lowerBead = document.createElement('div');
                         lowerBead.className = 'lower-bead';
                         lowerBead.dataset.value = '1';
                         lowerBead.dataset.rodIndex = i;
+                        lowerBead.dataset.beadIndex = j;
                         rod.appendChild(lowerBead);
+                        
+                        if (j < 3) {
+                            lowerBead.style.marginBottom = 'var(--bead-gap)';
+                        } else {
+                            lowerBead.style.marginBottom = '0';
+                        }
                     }
                     
                     rodsContainer.appendChild(rod);
-                    rods.push({ upperActive: false, lowerActive: 0 });
+                    rods.push({ upperActive: false, lowerActive: [] });
                 }
                 
                 // Event listeners
@@ -274,14 +300,20 @@
                 document.querySelectorAll('.lower-bead').forEach(bead => {
                     bead.addEventListener('click', function() {
                         const rodIndex = parseInt(this.dataset.rodIndex);
+                        const beadIndex = parseInt(this.dataset.beadIndex);
                         const isActive = this.classList.contains('active');
                         
                         if (!isActive) {
-                            this.classList.add('active');
-                            rods[rodIndex].lowerActive++;
+                            if (beadIndex === 0 || rods[rodIndex].lowerActive.includes(beadIndex - 1)) {
+                                this.classList.add('active');
+                                rods[rodIndex].lowerActive.push(beadIndex);
+                                rods[rodIndex].lowerActive.sort((a, b) => a - b);
+                            }
                         } else {
-                            this.classList.remove('active');
-                            rods[rodIndex].lowerActive--;
+                            if (beadIndex === rods[rodIndex].lowerActive.length - 1) {
+                                this.classList.remove('active');
+                                rods[rodIndex].lowerActive = rods[rodIndex].lowerActive.filter(b => b !== beadIndex);
+                            }
                         }
                         
                         calculateTotal();
@@ -294,7 +326,7 @@
                 
                 rods.forEach((rod, index) => {
                     const placeValue = Math.pow(10, rodCount - index - 1);
-                    const rodValue = (rod.upperActive ? 5 : 0) + rod.lowerActive;
+                    const rodValue = (rod.upperActive ? 5 : 0) + rod.lowerActive.length;
                     total += rodValue * placeValue;
                 });
                 
