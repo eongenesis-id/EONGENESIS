@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Classic Wooden Sempoa</title>
+    <title>Futuristic Sempoa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Warna Kayu Mewah */
-            --wood-dark: #3a2720;  /* Mahoni tua */
-            --wood-light: #5a4a42; /* Kayu oak */
-            --wood-accent: #7a6a62;
-            --divider-color: #b8a692; /* Warna brass */
+            /* Luxury Wood Tones */
+            --wood-dark: #3a2e1f;
+            --wood-light: #5d4a36;
+            --wood-accent: #8b7a65;
+            --divider-color: #b8a692;
             
-            /* Warna Beads */
-            --bead-upper-dark: #f5f5f5;  /* Mutiara */
-            --bead-upper-light: #ffffff; /* Putih mutiara */
-            --bead-lower-dark: #d4af37;   /* Emas tua */
-            --bead-lower-light: #f5d062;  /* Emas muda */
-            --bead-glow: rgba(245, 208, 98, 0.4);
+            /* Elegant Bead Colors */
+            --bead-upper: #d4af37;
+            --bead-upper-light: #f5d062;
+            --bead-lower: #c0c0c0;
+            --bead-lower-light: #e5e5e5;
             
-            /* Ukuran Responsif */
-            --bead-size: min(14vw, 50px);
-            --rod-spacing: min(3vw, 15px);
-            --divider-height: min(2vw, 10px);
-            --bead-gap: min(2vw, 10px);
-            --extra-space: min(7vw, 25px);
+            /* Sizing */
+            --bead-size: min(13vw, 48px);
+            --rod-spacing: min(3vw, 14px);
+            --divider-height: min(2vw, 9px);
+            --bead-gap: min(2vw, 9px);
+            --extra-space: min(6vw, 23px);
+            
+            /* Bounce Effects */
+            --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
-            padding: 10px;
-            background: linear-gradient(135deg, #f5e7d8, #e8d5b5);
-            color: #3a2720;
+            padding: 0;
+            background: #f5f1ea;
+            color: #3a2e1f;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -41,61 +44,52 @@
             touch-action: manipulation;
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            order: -1;
-        }
-        
-        .brand {
-            font-size: min(8vw, 2.2rem);
-            font-weight: bold;
-            color: #3a2720;
-            margin-bottom: 0.2rem;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        
-        .logo {
-            font-size: min(6vw, 1.8rem);
-            color: #3a2720;
-            margin-top: 0;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
         .abacus-frame {
             background: linear-gradient(145deg, var(--wood-dark), var(--wood-light));
-            padding: min(4vw, 20px) min(3vw, 15px);
-            border-radius: 15px;
+            padding: min(4vw, 18px);
+            border-radius: 18px;
             box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.2),
+                0 15px 35px rgba(0, 0, 0, 0.2),
                 inset 0 0 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--wood-accent);
-            width: 95%;
-            max-width: 500px;
+            border: 2px solid var(--divider-color);
+            width: 94%;
+            max-width: 460px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
         }
         
-        .abacus-frame::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
-            box-shadow: 0 0 10px var(--divider-color);
+        .branding {
+            text-align: center;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 4;
+        }
+        
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: min(6vw, 1.8rem);
+            font-weight: 700;
+            color: var(--bead-upper);
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: min(4.5vw, 1.3rem);
+            color: var(--bead-lower-light);
+            margin-top: 4px;
+            font-style: italic;
         }
         
         .rods-container {
             display: flex;
             justify-content: space-between;
-            padding: min(4vw, 20px) 0;
+            padding: min(3vw, 15px) 0;
             min-height: calc(var(--bead-size) * 8);
+            position: relative;
         }
         
         .rod {
@@ -117,7 +111,7 @@
             z-index: 1;
             border-radius: 4px;
             box-shadow: 
-                inset 0 0 8px rgba(0, 0, 0, 0.4),
+                inset 0 0 10px rgba(0, 0, 0, 0.4),
                 0 0 5px rgba(0, 0, 0, 0.2);
         }
         
@@ -126,18 +120,18 @@
             height: var(--bead-size);
             background: radial-gradient(circle at 30% 30%, 
                 var(--bead-upper-light),
-                var(--bead-upper-dark) 70%);
+                var(--bead-upper) 70%);
             border-radius: 50%;
             margin-bottom: calc(var(--bead-gap) + var(--extra-space));
             cursor: pointer;
             position: relative;
             z-index: 2;
             box-shadow: 
-                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-                0 2px 5px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.3);
+                inset -5px -5px 10px rgba(0, 0, 0, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255,255,255,0.3);
+            transition: all 0.4s var(--bounce-timing);
+            border: 1px solid rgba(245, 208, 98, 0.5);
         }
         
         .lower-bead {
@@ -145,18 +139,18 @@
             height: var(--bead-size);
             background: radial-gradient(circle at 30% 30%, 
                 var(--bead-lower-light),
-                var(--bead-lower-dark) 70%);
+                var(--bead-lower) 70%);
             border-radius: 50%;
             margin-bottom: var(--bead-gap);
             cursor: pointer;
             position: relative;
             z-index: 2;
             box-shadow: 
-                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-                0 2px 5px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(245, 208, 98, 0.5);
+                inset -5px -5px 10px rgba(0, 0, 0, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255,255,255,0.3);
+            transition: all 0.4s var(--bounce-timing);
+            border: 1px solid rgba(192, 192, 192, 0.6);
         }
         
         .horizontal-divider {
@@ -169,64 +163,62 @@
             margin: calc(var(--extra-space) * 1.5) 0;
             position: relative;
             box-shadow: 
-                inset 0 2px 4px rgba(0, 0, 0, 0.3),
-                0 1px 3px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(184, 166, 146, 0.5);
+                inset 0 3px 6px rgba(0, 0, 0, 0.3),
+                0 2px 5px rgba(0, 0, 0, 0.3);
             border-radius: 3px;
             z-index: 3;
         }
         
         .value-display {
-            font-family: 'Georgia', serif;
-            font-size: min(8vw, 2.5rem);
-            color: var(--bead-lower-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: min(8vw, 2.4rem);
+            color: var(--wood-dark);
             text-align: center;
-            margin-top: min(4vw, 20px);
+            margin-top: min(3vw, 15px);
             letter-spacing: 2px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             padding: min(3vw, 10px) min(5vw, 20px);
-            border-radius: 10px;
-            border: 1px solid var(--wood-accent);
+            border-radius: 12px;
+            border: 1px solid var(--divider-color);
             box-shadow: 
                 inset 0 0 10px rgba(0, 0, 0, 0.1),
                 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
         .upper-bead.active {
-            transform: translateY(calc(var(--bead-size) * 0.75 + var(--divider-height) / 2 + var(--extra-space) * 1.125)) scale(1.03);
+            transform: translateY(calc(var(--bead-size) * 0.75 + var(--divider-height) / 2 + var(--extra-space) * 1.125)) scale(1.05);
+            box-shadow: 
+                inset -5px -5px 10px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.25),
+                0 0 0 2px rgba(255,255,255,0.4);
         }
         
         .lower-bead.active {
-            transform: translateY(calc(var(--bead-size) * -0.25 - var(--divider-height) / 2 - var(--extra-space) * 0.375)) scale(1.03);
+            transform: translateY(calc(var(--bead-size) * -0.25 - var(--divider-height) / 2 - var(--extra-space) * 0.375)) scale(1.05);
+            box-shadow: 
+                inset -5px -5px 10px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.25),
+                0 0 0 2px rgba(255,255,255,0.4);
         }
         
-        .upper-bead:hover:not(.active), .upper-bead:active:not(.active) {
-            transform: scale(1.05);
-            box-shadow: 
-                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-                0 3px 6px rgba(0, 0, 0, 0.2),
-                0 0 0 2px rgba(255, 255, 255, 0.5);
-        }
-        
-        .lower-bead:hover:not(.active), .lower-bead:active:not(.active) {
-            transform: scale(1.05);
-            box-shadow: 
-                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-                0 3px 6px rgba(0, 0, 0, 0.2),
-                0 0 0 2px rgba(245, 208, 98, 0.5);
+        .upper-bead:hover:not(.active), 
+        .lower-bead:hover:not(.active) {
+            transform: scale(1.08);
+            filter: brightness(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="brand">EONGENESIS.ID</div>
-        <div class="logo">Futuristic Sempoa</div>
-    </div>
-    
     <div class="abacus-frame">
+        <div class="branding">
+            <div class="brand">EONGENESIS.ID</div>
+            <div class="logo">Futuristic Sempoa</div>
+        </div>
+        
         <div class="rods-container" id="rods-container">
             <!-- Rods will be generated by JavaScript -->
         </div>
+        
         <div class="value-display" id="value-display">0</div>
     </div>
 
@@ -249,19 +241,19 @@
                     rodLine.className = 'rod-line';
                     rod.appendChild(rodLine);
                     
-                    // Upper bead (nilai 5)
+                    // Upper bead (value 5)
                     const upperBead = document.createElement('div');
                     upperBead.className = 'upper-bead';
                     upperBead.dataset.value = '5';
                     upperBead.dataset.rodIndex = i;
                     rod.appendChild(upperBead);
                     
-                    // Horizontal divider
+                    // Divider
                     const divider = document.createElement('div');
                     divider.className = 'horizontal-divider';
                     rod.appendChild(divider);
                     
-                    // Lower beads (4 biji, nilai 1 masing-masing)
+                    // Lower beads (4 beads, value 1 each)
                     for (let j = 0; j < 4; j++) {
                         const lowerBead = document.createElement('div');
                         lowerBead.className = 'lower-bead';
@@ -269,30 +261,18 @@
                         lowerBead.dataset.rodIndex = i;
                         lowerBead.dataset.beadIndex = j;
                         rod.appendChild(lowerBead);
-                        
-                        if (j < 3) {
-                            lowerBead.style.marginBottom = 'var(--bead-gap)';
-                        } else {
-                            lowerBead.style.marginBottom = '0';
-                        }
                     }
                     
                     rodsContainer.appendChild(rod);
                     rods.push({ upperActive: false, lowerActive: [] });
                 }
                 
-                // Event listeners
+                // Fixed click handlers
                 document.querySelectorAll('.upper-bead').forEach(bead => {
                     bead.addEventListener('click', function() {
                         const rodIndex = parseInt(this.dataset.rodIndex);
                         rods[rodIndex].upperActive = !rods[rodIndex].upperActive;
-                        
-                        if (rods[rodIndex].upperActive) {
-                            this.classList.add('active');
-                        } else {
-                            this.classList.remove('active');
-                        }
-                        
+                        this.classList.toggle('active');
                         calculateTotal();
                     });
                 });
@@ -301,16 +281,15 @@
                     bead.addEventListener('click', function() {
                         const rodIndex = parseInt(this.dataset.rodIndex);
                         const beadIndex = parseInt(this.dataset.beadIndex);
-                        const isActive = this.classList.contains('active');
                         
-                        if (!isActive) {
+                        if (!this.classList.contains('active')) {
                             if (beadIndex === 0 || rods[rodIndex].lowerActive.includes(beadIndex - 1)) {
                                 this.classList.add('active');
                                 rods[rodIndex].lowerActive.push(beadIndex);
                                 rods[rodIndex].lowerActive.sort((a, b) => a - b);
                             }
                         } else {
-                            if (beadIndex === rods[rodIndex].lowerActive.length - 1) {
+                            if (beadIndex === rods[rodIndex].lowerActive[rods[rodIndex].lowerActive.length - 1]) {
                                 this.classList.remove('active');
                                 rods[rodIndex].lowerActive = rods[rodIndex].lowerActive.filter(b => b !== beadIndex);
                             }
